@@ -44,10 +44,10 @@ let config = {
 		// 	module: "updatenotification",
 		// 	position: "top_bar"
 		// },
-		// {
-		// 	module: "clock",
-		// 	position: "top_left"
-		// },
+		{
+			module: "clock",
+			position: "top_left"
+		},
 		// {
 		// 	module: "calendar",
 		// 	header: "US Holidays",
@@ -67,15 +67,25 @@ let config = {
 		// },
 		// {
 		// 	module: "weather",
-		// 	position: "top_right",
+		// 	position: "bottom_bar",
 		// 	config: {
 		// 		weatherProvider: "openweathermap",
 		// 		type: "current",
-		// 		location: "New York",
-		// 		locationID: "5128581", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-		// 		apiKey: "INSERT_KEY_HERE"
+		// 		location: "Zurich",
+		// 		locationID: "2657896", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+		// 		apiKey: "0643e0da3c1a8f87a476c2b4cc254a9a"
 		// 	}
 		// },
+		{
+			module: "MMM-OpenWeatherForecast",
+			position: "bottom_bar",
+			header: "Forecast",
+			config: {
+			  apikey: "0643e0da3c1a8f87a476c2b4cc254a9a", //only string here
+			  latitude: 47.50159867247509,          //number works here
+			  longitude: 8.695435244955462          //so does a string
+			}
+		  },
 		// {
 		// 	module: "weather",
 		// 	position: "top_right",
@@ -95,46 +105,41 @@ let config = {
         //         // See below for configurable options, this is optional
         //     }
         // },
-		// {
-		// 	module: 'worldclock',
-		// 	position: 'top_left', // This can be any of the regions, best results in top_left or top_right regions
-		// 	config: {
-		// 		// See 'Configuration options' for more information.
-		// 		timeFormat: 'HH:MM', //defined in moment.js format()
-		// 		style: 'top', //predefined 4 styles; 'top', 'left','right','bottom'
-		// 		offsetTimezone: `Europe/Zurich`, // Or you can set `Europe/Berlin` to get timegap difference from this timezone. `null` will be UTC timegap.
-		// 		clocks: [
-		// 		{
-		// 			title: "Home",
-		// 		},
-		// 		{
-		// 			title: "Vancouver", // Too long title could cause ugly text align.
-		// 			timezone: "America/Vancouver", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
-		// 			flag: "ca",
-		// 		},
-		// 		{
-		// 			title: "New York", // Too long title could cause ugly text align.
-		// 			timezone: "America/New_York", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
-		// 			flag: "us",
-		// 		},
-		// 		{
-		// 			title: "London", // Too long title could cause ugly text align.
-		// 			timezone: "Europe/London", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
-		// 			flag: "gb",
-		// 		},
-		// 		{
-		// 			title: "Helsinki", // Too long title could cause ugly text align.
-		// 			timezone: "Europe/Helsinki", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
-		// 			flag: "fi",
-		// 		},
-		// 		{
-		// 			title: "Tokyo", // Too long title could cause ugly text align.
-		// 			timezone: "Asia/Tokyo", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
-		// 			flag: "jp",
-		// 		}
-		// 		]
-		// 	}
-		// },
+		{
+			module: 'worldclock',
+			position: 'top_right', // This can be any of the regions, best results in top_left or top_right regions
+			config: {
+				// See 'Configuration options' for more information.
+				timeFormat: 'HH:MM', //defined in moment.js format()
+				style: 'top', //predefined 4 styles; 'top', 'left','right','bottom'
+				offsetTimezone: `Europe/Zurich`, // Or you can set `Europe/Berlin` to get timegap difference from this timezone. `null` will be UTC timegap.
+				clocks: [
+				{
+					title: "Home",
+				},
+				{
+					title: "Vancouver", // Too long title could cause ugly text align.
+					timezone: "America/Vancouver", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
+					flag: "ca",
+				},
+				{
+					title: "New York", // Too long title could cause ugly text align.
+					timezone: "America/New_York", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
+					flag: "us",
+				},
+				{
+					title: "London", // Too long title could cause ugly text align.
+					timezone: "Europe/London", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
+					flag: "gb",
+				},
+				{
+					title: "Tokyo", // Too long title could cause ugly text align.
+					timezone: "Asia/Tokyo", //When omitted, Localtime will be displayed. It might be not your purporse, I bet.
+					flag: "jp",
+				}
+				]
+			}
+		},
 		// {
 		// 	module: 'MMM-SwissStationboard',
 		// 	position: 'top_right',
@@ -165,22 +170,37 @@ let config = {
 		// 			category: 'random',	
 		// 	}
 		// },
-		{
-			module: "newsfeed",
-			position: "lower_third",
-			config: {
-				feeds: [
-					{
-						title: "BBC World",
-						url: "http://feeds.bbci.co.uk/news/world/rss.xml",
-					}
-				],
-				showSourceTitle: true,
-				showPublishDate: true,
-				broadcastNewsFeeds: true,
-				broadcastNewsUpdates: true
-			}
-		},
+		// {
+		// 	module: "newsfeed",
+		// 	position: "lower_third",
+		// 	config: {
+		// 		feeds: [
+		// 			{
+		// 				title: "BBC World",
+		// 				url: "http://feeds.bbci.co.uk/news/world/rss.xml",
+		// 			}
+		// 		],
+		// 		showSourceTitle: true,
+		// 		showPublishDate: true,
+		// 		broadcastNewsFeeds: true,
+		// 		broadcastNewsUpdates: true
+		// 	}
+		// },
+		// {
+		// 	module: "MMM-GooglePhotos",
+		// 	position: "fullscreen_below",
+		// 	config: {
+		// 		albumId: "<YOUR_GOOGLE_PHOTOS_ALBUM_ID>", // your album id from result of `auth_and_test.js`
+		// 		refreshInterval: 1000*60,  // too short refreshing might cause API quota limit. Under 10sec will exhaust your quota(usually total  under 25000 per day).
+		// 		scanInterval: 1000*60*60, // too many scans might cause API quota limit also.
+		// 		sort: "time", //'time', 'reverse', 'random'
+		// 		showWidth: "100%", // how large the photo will be shown as. (e.g;'100%' for fullscreen)
+		// 		showHeight: "100%",
+		// 		originalWidthPx: 1920, // original size of loaded image. (related with image quality)
+		// 		originalHeightPx: 1080, // Bigger size gives you better quality, but can give you network burden.
+		// 		mode: "cover", // "cover" or "contain" (https://www.w3schools.com/cssref/css3_pr_background-size.asp)
+		// 	}
+		// },
 		// {
 		// 	module: 'MagicMirror-FootballLeagues',
 		// 	position: 'top_right',
@@ -206,44 +226,44 @@ let config = {
 		}
 		},
 		// WB-clock adds local time (Optional Module)
-		{
-		module: "WallberryTheme/WB-clock",
-		position: "top_bar", // highly suggest using top_bar position
-		config: {
-			localCityName: "Zurich",
-			otherCities: [
-					{
-						name: "Vancouver",
-						timezone: "America/Vancouver"
-					},
-					{
-						name: "New York",
-						timezone: "America/New_York"
-					},
-					{
-						name: "London",
-						timezone: "Europe/London"
-					},
-					{
-						name: "Helsinki",
-						timezone: "Europe/Helsinki"
-					}
-				]
-			}
-		},
+		// {
+		// module: "WallberryTheme/WB-clock",
+		// position: "top_bar", // highly suggest using top_bar position
+		// config: {
+		// 	localCityName: "Zurich",
+		// 	otherCities: [
+		// 			{
+		// 				name: "Vancouver",
+		// 				timezone: "America/Vancouver"
+		// 			},
+		// 			{
+		// 				name: "New York",
+		// 				timezone: "America/New_York"
+		// 			},
+		// 			{
+		// 				name: "London",
+		// 				timezone: "Europe/London"
+		// 			},
+		// 			{
+		// 				name: "Tokyo",
+		// 				timezone: "Asia/Tokyo"
+		// 			}
+		// 		]
+		// 	}
+		// },
 		// WB-weather adds weather (Optional Module)
-		{
-			module: "WallberryTheme/WB-weather",
-			position: "bottom_bar",  // Highly suggested location
-			config: {
-				apiKey: "INSERT_KEY_HERE",
-				latitude: 47.3769,
-				longitude: 8.5417,
-				units: "metric",
-				updateInterval: 60000
-			}
-		}
-	]
+		// {
+		// 	module: "WallberryTheme/WB-weather",
+		// 	position: "bottom_bar",  // Highly suggested location
+		// 	config: {
+		// 		apiKey: "0643e0da3c1a8f87a476c2b4cc254a9a",
+		// 		latitude: 47.50159867247509,
+		// 		longitude: 8.695435244955462,
+		// 		units: "metric",
+		// 		updateInterval: 60000
+		// 	}
+		// }
+	],
 };
 
 /*************** DO NOT EDIT THE LINE BELOW ***************/
